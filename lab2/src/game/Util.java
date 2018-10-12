@@ -1,5 +1,8 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Tyler Fenton
  */
@@ -14,18 +17,20 @@ public class Util {
     /**
      * Initialize each provided piece to the given team and set to man status.
      *
-     * @param arr The pieces to be initialized.
+     * @param arrl The pieces to be initialized.
      * @param team The team each piece will be set to.
      */
-    public static void initializeTeam(Piece arr[], String team) {
-        for(Piece piece : arr) {
+    public static void initializeTeam(List<Piece> arrl, String team) {
+        for(int i = 0; i < 12; i++) {
+            Piece piece = new Piece();
             piece.setColor(team);
             piece.setStatus(MAN);
+            arrl.add(piece);
         }
         if (team.equals(WHITE)) {
-            placeWhiteTeam(arr);
+            placeWhiteTeam(arrl);
         } else if (team.equals(RED)){
-            placeRedTeam(arr);
+            placeRedTeam(arrl);
         }
     }
 
@@ -37,7 +42,7 @@ public class Util {
      * @param whiteTeam The white team. Used to initialize board with white team positions.
      * @param redTeam The red team. Used to initialize board with red team positions.
      */
-    public static void initializeBoard(int board[][], Piece whiteTeam[], Piece redTeam[]) {
+    public static void initializeBoard(int[][] board, List<Piece> whiteTeam, List<Piece> redTeam) {
         /* set each position on the board to 0 */
         for(int[] subArray : board) {
             for(int position : subArray) {
@@ -57,47 +62,47 @@ public class Util {
     /**
      * Brute force implementation for initializing white team positions.
      *
-     * @param arr White pieces.
+     * @param arrl White pieces.
      */
-    private static void placeWhiteTeam(Piece arr[]) {
+    private static void placeWhiteTeam(List<Piece> arrl) {
         /* y=0 row */
-        arr[0].setPosition(1, 0);
-        arr[1].setPosition(3, 0);
-        arr[2].setPosition(5, 0);
-        arr[3].setPosition(7, 0);
+        arrl.get(0).setPosition(1, 0);
+        arrl.get(1).setPosition(3, 0);
+        arrl.get(2).setPosition(5, 0);
+        arrl.get(3).setPosition(7, 0);
         /* y=1 row */
-        arr[4].setPosition(0, 1);
-        arr[5].setPosition(2, 1);
-        arr[6].setPosition(4, 1);
-        arr[7].setPosition(6, 1);
+        arrl.get(4).setPosition(0, 1);
+        arrl.get(5).setPosition(2, 1);
+        arrl.get(6).setPosition(4, 1);
+        arrl.get(7).setPosition(6, 1);
         /* y=2 row */
-        arr[8].setPosition(1, 2);
-        arr[9].setPosition(3, 2);
-        arr[10].setPosition(5, 2);
-        arr[11].setPosition(7, 2);
+        arrl.get(8).setPosition(1, 2);
+        arrl.get(9).setPosition(3, 2);
+        arrl.get(10).setPosition(5, 2);
+        arrl.get(11).setPosition(7, 2);
     }
 
     /**
      * Brute force implementation for initializing red team positions.
      *
-     * @param arr Red pieces.
+     * @param arrl Red pieces.
      */
-    private static void placeRedTeam(Piece arr[]) {
+    private static void placeRedTeam(List<Piece> arrl) {
         /* y=5 row */
-        arr[0].setPosition(0, 5);
-        arr[1].setPosition(2, 5);
-        arr[2].setPosition(4, 5);
-        arr[3].setPosition(6, 5);
+        arrl.get(0).setPosition(0, 5);
+        arrl.get(1).setPosition(2, 5);
+        arrl.get(2).setPosition(4, 5);
+        arrl.get(3).setPosition(6, 5);
         /* y=6 row */
-        arr[4].setPosition(1, 6);
-        arr[5].setPosition(3, 6);
-        arr[6].setPosition(5, 6);
-        arr[7].setPosition(7, 6);
+        arrl.get(4).setPosition(1, 6);
+        arrl.get(5).setPosition(3, 6);
+        arrl.get(6).setPosition(5, 6);
+        arrl.get(7).setPosition(7, 6);
         /* y=7 row */
-        arr[8].setPosition(0, 7);
-        arr[9].setPosition(2, 7);
-        arr[10].setPosition(4, 7);
-        arr[11].setPosition(6, 7);
+        arrl.get(8).setPosition(0, 7);
+        arrl.get(9).setPosition(2, 7);
+        arrl.get(10).setPosition(4, 7);
+        arrl.get(11).setPosition(6, 7);
     }
 
 }

@@ -11,11 +11,8 @@ public class Piece {
     private int xPosition;
     private int yPosition;
 
-    public Piece (String color, String status, int x, int y) {
-        this.color = color;
-        this.status = status;
-        this.xPosition = x;
-        this.yPosition = y;
+    public Piece() {
+
     }
 
     public void setColor(String color) {

@@ -24,6 +24,16 @@ public class Checkers {
 
     public static void main(String args[]) {
         Checkers game = new Checkers();
+        game.printCheckers();
+    }
+
+    public void printCheckers() {
+        for(int[] subArray : this.board) {
+            for(int position : subArray) {
+                System.out.print(position + " ");
+            }
+            System.out.println();
+        }
     }
 
 }

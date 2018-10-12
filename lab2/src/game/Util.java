@@ -51,11 +51,11 @@ public class Util {
         }
         /* set each white piece to 1 */
         for(Piece piece : whiteTeam) {
-            board[piece.getxPosition()][piece.getyPosition()] = 1;
+            board[piece.getyPosition()][piece.getxPosition()] = 1;
         }
         /* set each red piece to 2 */
         for(Piece piece : redTeam) {
-            board[piece.getxPosition()][piece.getyPosition()] = 2;
+            board[piece.getyPosition()][piece.getxPosition()] = 2;
         }
     }
 

@@ -13,6 +13,11 @@ public class Util {
     public static final String WHITE = "white";
     public static final String MAN = "man";
     public static final String KING = "king";
+    public static final char WHITE_MAN = 'w';
+    public static final char WHITE_KING = 'W';
+    public static final char RED_MAN = 'r';
+    public static final char RED_KING = 'R';
+    public static final char EMPTY_SPACE = '0';
 
     /**
      * Initialize each provided piece to the given team and set to man status.
@@ -42,20 +47,20 @@ public class Util {
      * @param whiteTeam The white team. Used to initialize board with white team positions.
      * @param redTeam The red team. Used to initialize board with red team positions.
      */
-    public static void initializeBoard(int[][] board, List<Piece> whiteTeam, List<Piece> redTeam) {
+    public static void initializeBoard(char[][] board, List<Piece> whiteTeam, List<Piece> redTeam) {
         /* set each position on the board to 0 */
-        for(int[] subArray : board) {
-            for(int position : subArray) {
-                position = 0;
+        for(char[] subArray : board) {
+            for(char position : subArray) {
+                position = EMPTY_SPACE;
             }
         }
-        /* set each white piece to 1 */
+        /* set each white piece to 'w' */
         for(Piece piece : whiteTeam) {
-            board[piece.getyPosition()][piece.getxPosition()] = 1;
+            board[piece.getyPosition()][piece.getxPosition()] = WHITE_MAN;
         }
-        /* set each red piece to 2 */
+        /* set each red piece to 'r' */
         for(Piece piece : redTeam) {
-            board[piece.getyPosition()][piece.getxPosition()] = 2;
+            board[piece.getyPosition()][piece.getxPosition()] = RED_MAN;
         }
     }
 
@@ -103,6 +108,41 @@ public class Util {
         arrl.get(9).setPosition(2, 7);
         arrl.get(10).setPosition(4, 7);
         arrl.get(11).setPosition(6, 7);
+    }
+
+    /**
+     * Determines the correct character to return for the board based on the provided piece.
+     *
+     * @param piece Piece used to determine the correct character.
+     * @return Character which represents the type and status of the given Piece.
+     */
+    public static char getCharType(Piece piece) {
+        if(piece.getColor().equals(RED)) {
+            if(piece.getStatus().equals(KING)) {
+                return RED_KING;
+            } else {
+                return RED_MAN;
+            }
+        } else if(piece.getStatus().equals(WHITE)){
+            if(piece.getStatus().equals(KING)) {
+                return WHITE_KING;
+            } else {
+                return WHITE_MAN;
+            }
+        }
+        return '0';
+    }
+
+    /**
+     * Prints the checkerboard.
+     */
+    public static void printCheckers(char[][] board) {
+        for(char[] subArray : board) {
+            for(char position : subArray) {
+                System.out.print(position + " ");
+            }
+            System.out.println();
+        }
     }
 
 }

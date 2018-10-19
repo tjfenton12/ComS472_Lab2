@@ -70,11 +70,8 @@ public class Checkers {
         if(!isLegalMove(playerPiece, destinationX, destinationY)) {
             return false;
         }
-        /* Sets the former position of the playerPiece to empty */
         board[playerPiece.getyPosition()][playerPiece.getxPosition()] = Util.EMPTY_SPACE;
-        /* Update the playerPiece's new position */
         playerPiece.setPosition(destinationX, destinationY);
-        /* Assigns the space on the board to the appropriate character given the player piece */
         board[playerPiece.getyPosition()][playerPiece.getxPosition()] = Util.getCharType(playerPiece);
 
         return true;
